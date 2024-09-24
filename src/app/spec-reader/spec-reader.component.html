@@ -1,0 +1,42 @@
+<div class="min-h-screen bg-gray-100">
+  <div class="bg-gray-900 text-white p-6">
+    <h1 class="text-2xl font-bold mb-2">AI Spec and Part Number Reader</h1>
+    <p class="text-sm">
+      This tool allows you to import data from PDF files using AI.
+      <br />
+      <br />
+      1. Upload the PDF. Tip: Select the most relevant pages for the AI to
+      parse<br />
+      2. The AI will fill out the table<br />
+      3. Review and Edit the AI findings. AI is prone to misinterpretation.<br /><br />
+      Optionally:<br /><br />
+      Please select the column that matches the quantities and descriptions.
+    </p>
+  </div>
+
+  <div class="p-6">
+    <div class="flex justify-between items-center mb-6">
+      <div class="flex space-x-2">
+    <input
+      type="file"
+      (change)="onFileSelected($event, 'pdf')"
+      accept=".pdf"
+      id="pdfUpload"
+      class="hidden"
+    />
+    <button
+      (click)="triggerFileInput('pdfUpload')"
+      class="px-4 py-2 bg-orange-400 text-white rounded hover:bg-orange-500 transition-colors"
+    >
+      Use AI
+    </button>
+  </div>
+</div>
+
+
+<ngx-datatable
+  #myTable
+  [rows]="rows"
+  [columns]="columns"
+>
+</ngx-datatable>

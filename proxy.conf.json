@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://extract-fragrant-meadow-7348.fly.dev",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
