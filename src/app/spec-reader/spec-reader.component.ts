@@ -86,7 +86,6 @@ export class SpecReaderComponent {
     if (file) {
       if (fileType === 'pdf') {
         try {
-          console.log('File sent to api');
           this.ai.extractFixtures(file).subscribe((results: any[]) => {
             console.log('Results:', results);
             this.rows = results;

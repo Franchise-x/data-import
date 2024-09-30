@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { map, Observable, timeout } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -15,7 +15,9 @@ export class AiApiService {
     formData.append('file', file, file.name);
 
     return this.http.post(`${this.apiUrl}/specs/extract`, formData).pipe(
+      timeout(300000),
       map((response: any) => {
+        console.log('Fixture:', response);
         return response.fixtures.map((fixture: any) => ({
           'Fixture Type': fixture.name,
           'Part Number': fixture.part_number,
@@ -26,5 +28,9 @@ export class AiApiService {
         }));
       })
     );
+  }
+
+  pingServer(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/`);
   }
 }
