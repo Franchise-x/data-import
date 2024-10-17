@@ -86,7 +86,13 @@ export class SpecReaderComponent {
     if (file) {
       if (fileType === 'pdf') {
         try {
-          this.ai.extractFixtures(file).subscribe((results: any[]) => {
+          // this.ai.extractFixtures(file).subscribe((results: any[]) => {
+          //   console.log('Results:', results);
+          //   this.rows = results;
+          //   this.columns = this.generateColumns(results[0]);
+          //   this.cdr.detectChanges();
+          // });
+          this.ai.processQuote(file).subscribe((results: any[]) => {
             console.log('Results:', results);
             this.rows = results;
             this.columns = this.generateColumns(results[0]);
